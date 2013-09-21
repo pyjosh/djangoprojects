@@ -2,6 +2,8 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf
+# for registration
+from django.contrib.auth.forms import UserCreationForm
 
 
 def login(request):
@@ -32,3 +34,29 @@ def invalid_login(request):
 def logout(request):
     auth.logout(request)
     return render_to_response('logout.html')
+
+
+#
+# registration
+#
+def register_user(request):
+    # look at the request object and see if it has a method POST
+    if request.method == 'POST':
+        # that will crate form object
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            # save new user
+            form.save()
+            return HttpResponseRedirect('/accounts/register_success')
+
+    # this happend for the 1st time user visits the page
+    args = {}
+    args.update(csrf(request))
+
+    # give a blank form
+    args['form'] = UserCreationForm()
+
+    return render_to_response('register.html', args)
+
+def register_success(request):
+    return render_to_response('register_success.html')
