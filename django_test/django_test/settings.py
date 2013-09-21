@@ -112,6 +112,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     'E:/django/github/djangoprojects/django_test/templates',
+    'E:/django/github/djangoprojects/django_test/article/tempates',
 )
 
 INSTALLED_APPS = (
