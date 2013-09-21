@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf
 # for registration
-from django.contrib.auth.forms import UserCreationForm
+from forms import MyRegistrationForm
 
 
 def login(request):
@@ -43,7 +43,7 @@ def register_user(request):
     # look at the request object and see if it has a method POST
     if request.method == 'POST':
         # that will crate form object
-        form = UserCreationForm(request.POST)
+        form = MyRegistrationForm(request.POST)
         if form.is_valid():
             # save new user
             form.save()
@@ -54,7 +54,7 @@ def register_user(request):
     args.update(csrf(request))
 
     # give a blank form
-    args['form'] = UserCreationForm()
+    args['form'] = MyRegistrationForm()
 
     return render_to_response('register.html', args)
 

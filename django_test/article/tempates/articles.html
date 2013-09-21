@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 
+
+{% block sidebar %}
+<ul>
+    <li><a href="/articles/create">Create articles</a></li>
+</ul>
+{% endblock sidebar %}
+
 {% block content %}
 
 <h2>Cookie lang is: {{ language }}</h2>

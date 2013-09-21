@@ -3,6 +3,10 @@ from article.models import Article
 # for sessions and cookies
 from django.http import HttpResponse
 
+# for "create" view
+from forms import ArticleForm
+from django.http import HttpResponseRedirect
+from django.core.context_processors import csrf
 
 def articles(request):
     # this on is stored in cookies
@@ -37,3 +41,23 @@ def language(request, language='en-gb'):
     request.session['lang'] = language
 
     return respone
+
+
+# for create Article
+def create(request):
+    # if user filled in the form (created article) and pressed "post"
+    if request.POST:
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            return HttpResponseRedirect('/articles/all')
+    # if user is visiting the page to create article - display blank form
+    else:
+        form = ArticleForm()
+
+    args = {}
+    args.update(csrf(request))
+
+    args['form'] = form
+    return render_to_response('create_article.html', args)
