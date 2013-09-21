@@ -10,6 +10,8 @@ from django.template import Context
 # --3.--  HelloTemplate
 from django.views.generic.base import TemplateView
 
+# --4.-- hello_template_simple
+from django.shortcuts import render_to_response
 
 def hello(request):
     name = "Mike"
@@ -22,6 +24,9 @@ def hello_template(request):
     html = t.render(Context({'name': name}))
     return HttpResponse(html)
 
+def hello_template_simple(request):
+    name = "Mike"
+    return render_to_response('hello.html', {'name': name})
 
 class HelloTemplate(TemplateView):
 
