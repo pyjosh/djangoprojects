@@ -2,8 +2,9 @@ from django.conf.urls import patterns, include, url
 #from article.views import HelloTemplate
 
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+# this will let Django look through all of our Model in this project
+admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^articles/', include('article.urls')),  # ! w/o $
@@ -15,7 +16,7 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 
     # tutorial 1.
     #   url(r'^hello/$', 'article.views.hello'),
