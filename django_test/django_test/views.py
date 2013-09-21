@@ -58,5 +58,6 @@ def register_user(request):
 
     return render_to_response('register.html', args)
 
+
 def register_success(request):
     return render_to_response('register_success.html')
