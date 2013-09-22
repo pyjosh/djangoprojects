@@ -8,6 +8,7 @@ Replace this with more appropriate tests for your application.
 from django.test import TestCase
 from article.models import Article, get_upload_file_name
 from django.utils import timezone
+from time import time
 
 
 class ArticleTest(TestCase):
@@ -21,3 +22,10 @@ class ArticleTest(TestCase):
         a = self.create_article()
         self.assertTrue(isinstance(a, Article))
         self.assertEqual(a.__unicode__(), a.title)
+
+    def test_get_upload_file_name(self):
+        filename = "Cheese.txt"
+        path = "uploaded_files/%s_%s" % (str(time()).replace('.', '_'), filename)
+        created_path = get_upload_file_name(self, filename)
+        self.assertEqual(path, created_path)
+
