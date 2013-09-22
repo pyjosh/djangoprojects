@@ -6,11 +6,18 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from article.models import Article, get_upload_file_name
+from django.utils import timezone
 
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+class ArticleTest(TestCase):
+    def create_article(self, title="test article", body="lorem ipsum"):
+        return Article.objects.create(title=title,
+                                    body=body,
+                                    pub_date=timezone.now(),
+                                    likes=0)
+
+    def test_article_creation(self):
+        a = self.create_article()
+        self.assertTrue(isinstance(a, Article))
+        self.assertEqual(a.__unicode__(), a.title)
