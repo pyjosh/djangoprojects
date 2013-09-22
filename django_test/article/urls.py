@@ -1,4 +1,7 @@
 from django.conf.urls import patterns, include, url
+from api import ArticleResource
+
+article_resource = ArticleResource()
 
 urlpatterns = patterns('',
     url(r'^all/$', 'article.views.articles'),
@@ -16,6 +19,9 @@ urlpatterns = patterns('',
     # for comments
     url(r'^add_comment/(?P<article_id>\d+)/$', 'article.views.add_comment'),
 
-    # for search - use to receive a msg using ajax call from js
+    # TODO: for search - use to receive a msg using ajax call from js
     url(r'^search/$', 'article.views.search_titles'),
+
+    # for API access (!) w/o '$' !!!
+    url(r'^api/', include(article_resource.urls)),
 )
