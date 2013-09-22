@@ -10,4 +10,9 @@ urlpatterns = patterns('',
     # create new article
     url(r'^create/$', 'article.views.create'),
 
+    # for "likes" update
+    url(r'^like/(?P<article_id>\d+)/$', 'article.views.like_article'),
+
+    # for comments
+    url(r'^add_comment/(?P<article_id>\d+)/$', 'article.views.add_comment'),
 )

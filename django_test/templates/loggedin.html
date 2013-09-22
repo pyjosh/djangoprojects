@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
+
+{% block loginform %}
+<p class="navbar-text pull-right">
+<i class="icon-user"></i> <a href="#" class="navbar-link">{{ full_name }}</a>
+<a href="/accounts/logout/" class="btn btn-mini">logout</a>
+
+</p>
+{% endblock loginform %}
+
+
 {% block content %}
 
   <h2> Hi {{ full_name }} Logged in ! </h2>

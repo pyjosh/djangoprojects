@@ -1,6 +1,20 @@
 {% extends "base.html" %}
 
+{% block toppanel %}
+<button type="submit" class="btn">Sign in</button>
+{% endblock toppanel %}
+
+{% block loginform %}
+            <form action="/accounts/auth/" method="post" class="navbar-form pull-right">{% csrf_token %}
+              <input class="span2" type="text"name="username" value="" id="username"  placeholder="user name">
+              <input class="span2" type="password" name="password" value="" id="password" placeholder="Password">
+              <button type="submit" class="btn">Sign in</button>
+            </form>
+{% endblock loginform %}
+
 {% block content %}
+
+<h2>Register</h2>
 
   {% if form.errors %}
    <p class="error"> Sorry, that is not a valid username or password </p>
