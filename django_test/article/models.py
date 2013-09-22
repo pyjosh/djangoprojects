@@ -16,8 +16,13 @@ class Article(models.Model):
     def __unicode__(self):
         return self.title
 
+    # this is what we consider proper url for article can be
+    def get_absolute_url(self):
+        return "/articles/get/%i/" % self.id
+
 class Comment(models.Model):
-    name = models.CharField(max_length=200)
+    first_name = models.CharField(max_length=200)
+    second_name = models.CharField(max_length=200)
     body = models.TextField()
     pub_date = models.DateTimeField('date published')
 
