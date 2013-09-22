@@ -1,33 +1,50 @@
 {% extends "base.html" %}
 
 
+
+
 {% block sidebar %}
-<ul>
-    <li><a href="/articles/create">Create articles</a></li>
-</ul>
+
+    <ul>
+        <li><a href="/articles/create">Create articles</a></li>
+    </ul>
+
+
+    <h3>Search</h3>
+    {% csrf_token %}
+    <input type="text" id="search" name="search" />
+    <!-- here area to display ajax search results -->
+    <ul id="search-results">
+
+    </ul>
+
 {% endblock sidebar %}
+
+
+
+
 
 {% block content %}
 
-<h2>Cookie lang is: {{ language }}</h2>
-<h2>Session lang is: {{ session_language }}</h2>
-<h1> Articles</h1>
+    <h2>Cookie lang is: {{ language }}</h2>
+    <h2>Session lang is: {{ session_language }}</h2>
+    <h1> Articles</h1>
 
-{% if articles.count > 0 %}
+        {% if articles.count > 0 %}
 
-        {% for article in articles %}
-            <div>
-                <h2><a href="/articles/get/{{article.id}}/">{{ article.title }}</a></h2>
-                <p>{{ article.body|lower|truncatewords:"10" }} </p>
-                <p>{{ article.likes }} people liked this</p>
-            </div>
-        {% endfor %}
+            {% for article in articles %}
+                <div>
+                    <h2><a href="/articles/get/{{article.id}}/">{{ article.title }}</a></h2>
+                    <p>{{ article.body|lower|truncatewords:"10" }} </p>
+                    <p>{{ article.likes }} people liked this</p>
+                </div>
+            {% endfor %}
 
 
-{% else %}
+        {% else %}
 
-        <p> No articles to show </p>
+            <p> No articles to show </p>
 
-{% endif %}
+        {% endif %}
 
 {% endblock content %}

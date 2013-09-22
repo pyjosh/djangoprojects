@@ -9,6 +9,8 @@ from django.http import HttpResponseRedirect
 from django.core.context_processors import csrf
 from django.utils import timezone
 
+
+
 def articles(request):
     # this on is stored in cookies
     language = 'en-gb'
@@ -21,11 +23,15 @@ def articles(request):
     if 'lang' in request.session:
         session_language = request.session['lang']
 
-    return render_to_response('articles.html',
-        {'articles': Article.objects.all(),
-        'language' : language,
-        'session_language': session_language}
-        )
+    args = {}
+    args.update(csrf(request))
+
+    args['articles'] = Article.objects.all()
+    args['language'] = language
+    args['session_language'] = session_language
+
+    return render_to_response('articles.html', args)
+
 
 def article(request, article_id):
     return render_to_response('article.html', {'article': Article.objects.get(id=article_id)})
@@ -108,3 +114,20 @@ def add_comment(request, article_id):
     args['form'] = f
 
     return render_to_response('add_comment.html', args)
+
+
+#
+# for ajax search
+#
+def search_titles(request):
+
+    if request.method == "POST":
+        # "search_text" - variable name
+        search_text = request.POST['search_text']
+    else:
+        search_text = ''
+
+    # do a search on articles in db using article title
+    articles = Article.objects.filter(title__contains=search_text)
+
+    return render_to_response('ajax_search.html', {'articles': articles})

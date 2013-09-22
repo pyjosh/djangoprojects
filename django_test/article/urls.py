@@ -15,4 +15,7 @@ urlpatterns = patterns('',
 
     # for comments
     url(r'^add_comment/(?P<article_id>\d+)/$', 'article.views.add_comment'),
+
+    # for search - use to receive a msg using ajax call from js
+    url(r'^search/$', 'article.views.search_titles'),
 )
