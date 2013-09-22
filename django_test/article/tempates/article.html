@@ -9,19 +9,27 @@
 
 
 {% block content %}
-<h1> {{ article.title }}</h1>
-<p> {{ article.body }}</p>
 
-<p> {{ article.likes }} people liked this article </p>
-<p><a href="/articles/like/{{ article.id }}"> like </a></p>
+    <!-- display Article -->
+    <h1> {{ article.title }}</h1>
+    <p> {{ article.body }}</p>
 
-<h2>Comments</h2>
-<a href="/articles/add_comment/{{ article.id }}" class="btn btn-large btn-primary">add comment</a>
+    <!-- THUMBNAIL -->
+    {% if article.thumbnail %}
+        <p><img src="/static/assets/{{ article.thumbnail }}" width="200"/></p>
+    {% endif %}
 
+    <!-- LIKES -->
+    <p> {{ article.likes }} people liked this article </p>
+    <p><a href="/articles/like/{{ article.id }}"> like </a></p>
 
-{% for c in article.comment_set.all %}
-<p>{{ c.name }}: {{ c.body }}</p>
-{% endfor %}
+    <!-- COMMENTS -->
+    <h2>Comments</h2>
+    <a href="/articles/add_comment/{{ article.id }}" class="btn btn-large btn-primary">add comment</a>
+
+    {% for c in article.comment_set.all %}
+    <p>{{ c.name }}: {{ c.body }}</p>
+    {% endfor %}
 
 
 {% endblock content %}

@@ -48,7 +48,8 @@ def language(request, language='en-gb'):
 def create(request):
     # if user filled in the form (created article) and pressed "post"
     if request.POST:
-        form = ArticleForm(request.POST)
+        # request.FILES - to get uploaded files
+        form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
 

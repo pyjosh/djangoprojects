@@ -1,0 +1,62 @@
+[
+{
+    "pk": 1, 
+    "model": "article.article", 
+    "fields": {
+        "body": "I recently switched to syncing my repos to https:// in github (due to firewall issues) and it asks for a password every time. It used to be that I had an ssh cert and it was enough. Is there a way to bypass password in my case (using http/https)?I recently switched to syncing my repos to https:// in github (due to firewall issues) and it asks for a password every time. It used to be that I had an ssh cert and it was enough. Is there a way to bypass password in my case (using http/https)?I recently switched to syncing my repos to https:// in github (due to firewall issues) and it asks for a password every time. It used to be that I had an ssh cert and it was enough. Is there a way to bypass password in my case (using http/https)?I recently switched to syncing my repos to https:// in github (due to firewall issues) and it asks for a password every time. It used to be that I had an ssh cert and it was enough. Is there a way to bypass password in my case (using http/https)?", 
+        "pub_date": "2013-09-21T09:22:32Z", 
+        "likes": 5, 
+        "title": "Test 1"
+    }
+},
+{
+    "pk": 2, 
+    "model": "article.article", 
+    "fields": {
+        "body": "I recently switched to syncing my repos to https:// in github (due to firewall issues) and it asks for a password every time. It used to be that I had an ssh cert and it was enough. Is there a way to bypass password in my case (using http/https)?I recently switched to syncing my repos to https:// in github (due to firewall issues) and it asks for a password every time. It used to be that I had an ssh cert and it was enough. Is there a way to bypass password in my case (using http/https)?I recently switched to syncing my repos to https:// in github (due to firewall issues) and it asks for a password every time. It used to be that I had an ssh cert and it was enough. Is there a way to bypass password in my case (using http/https)?", 
+        "pub_date": "2013-09-21T09:23:12Z", 
+        "likes": 0, 
+        "title": "Test 2"
+    }
+},
+{
+    "pk": 3, 
+    "model": "article.article", 
+    "fields": {
+        "body": "I recently switched to syncing my repos to https:// in github (due to firewall issues) and it asks for a password every time. It used to be that I had an ssh cert and it was enough. Is there a way to bypass password in my case (using http/https)?", 
+        "pub_date": "2013-09-21T11:10:22Z", 
+        "likes": 0, 
+        "title": "Test 3"
+    }
+},
+{
+    "pk": 4, 
+    "model": "article.article", 
+    "fields": {
+        "body": "sdf", 
+        "pub_date": "2009-09-08T22:00:00Z", 
+        "likes": 0, 
+        "title": "asdf"
+    }
+},
+{
+    "pk": 1, 
+    "model": "article.comment", 
+    "fields": {
+        "body": "reytr", 
+        "article": 1, 
+        "pub_date": "2013-09-22T09:50:28.206Z", 
+        "name": "rt"
+    }
+},
+{
+    "pk": 2, 
+    "model": "article.comment", 
+    "fields": {
+        "body": "This tutorial demonstrates how to create relationships in your models and form then query your data using the model framework\r\n", 
+        "article": 1, 
+        "pub_date": "2013-09-22T09:53:43.863Z", 
+        "name": "lukasz"
+    }
+}
+]
