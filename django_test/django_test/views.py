@@ -4,6 +4,12 @@ from django.contrib import auth
 from django.core.context_processors import csrf
 # for registration
 from forms import MyRegistrationForm
+# for form wizard
+from django.contrib.formtools.wizard.views import SessionWizardView
+from django.core.mail import send_mail
+
+import logging
+logger = logging.getLogger(__name__)
 
 
 def login(request):
@@ -61,3 +67,30 @@ def register_user(request):
 
 def register_success(request):
     return render_to_response('register_success.html')
+
+
+
+class ContactWizard(SessionWizardView):
+    template_name = "contact_form.html"
+
+    def done(self, form_list, **kwargs):
+        form_data = process_form_data(form_list)
+
+        return render_to_response('done.html', {'form_data': form_data})
+
+def process_form_data(form_list):
+    form_data = [form.cleaned_data for form in form_list]
+
+    logger.debug(form_data[0]['subject'])
+    logger.debug(form_data[1]['sender'])
+    logger.debug(form_data[2]['message'])
+
+    send_mail(
+        form_data[0]['subject'],
+        form_data[2]['message'],
+        form_data[1]['sender'],
+        ['richard.richdude@gmail.com'],
+        fail_silently=False
+        )
+
+    return form_data

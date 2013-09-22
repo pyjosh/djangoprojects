@@ -3,6 +3,13 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'fooo@gmail.com'
+EMAIL_HOST_PASSWORD = 'fooo'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -129,7 +136,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'article',
     'south',
-)
+    'django.contrib.formtools',
+    )
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

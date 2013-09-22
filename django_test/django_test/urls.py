@@ -6,6 +6,10 @@ from django.contrib import admin
 # this will let Django look through all of our Model in this project
 admin.autodiscover()
 
+
+from django_test.forms import ContactForm1, ContactForm2, ContactForm3
+from django_test.views import ContactWizard
+
 urlpatterns = patterns('',
     url(r'^articles/', include('article.urls')),  # ! w/o $
     # Examples:
@@ -32,4 +36,7 @@ urlpatterns = patterns('',
 
     url(r'^accounts/register/$', 'django_test.views.register_user'),
     url(r'^accounts/register_success/$', 'django_test.views.register_success'),
+
+
+    url(r'^contact/$', ContactWizard.as_view([ContactForm1, ContactForm2, ContactForm3])),
 )
