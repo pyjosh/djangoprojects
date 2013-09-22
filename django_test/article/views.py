@@ -10,8 +10,11 @@ from django.core.context_processors import csrf
 from django.utils import timezone
 
 
+import logging
+logger = logging.getLogger(__name__)
 
 def articles(request):
+    logger.info("foo")
     # this on is stored in cookies
     language = 'en-gb'
     # this one is stored in session
