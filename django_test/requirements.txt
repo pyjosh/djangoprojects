@@ -1,7 +1,9 @@
 Django==1.5
 South==0.8.2
+Whoosh==2.5.4
 coverage==3.6
 defusedxml==0.4.1
+django-haystack==2.1.0
 django-tastypie==0.10.0
 lxml==3.2.3
 mimeparse==0.1.3
