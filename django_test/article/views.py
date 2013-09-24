@@ -9,6 +9,8 @@ from django.http import HttpResponseRedirect
 from django.core.context_processors import csrf
 from django.utils import timezone
 
+from haystack.query import SearchQuerySet
+
 
 import logging
 logger = logging.getLogger(__name__)
@@ -120,17 +122,9 @@ def add_comment(request, article_id):
 
 
 #
-# for ajax search
+# for whoosh search
 #
 def search_titles(request):
-
-    if request.method == "POST":
-        # "search_text" - variable name
-        search_text = request.POST['search_text']
-    else:
-        search_text = ''
-
-    # do a search on articles in db using article title
-    articles = Article.objects.filter(title__contains=search_text)
+    articles = SearchQuerySet().autocomplete(content_auto=request.POST.get('search_text', ''))
 
     return render_to_response('ajax_search.html', {'articles': articles})

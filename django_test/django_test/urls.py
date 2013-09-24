@@ -41,4 +41,6 @@ urlpatterns = patterns('',
 
 
     url(r'^contact/$', ContactWizard.as_view([ContactForm1, ContactForm2, ContactForm3])),
+
+    url(r'^search/', include('haystack.urls')),
 )

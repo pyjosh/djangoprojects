@@ -9,6 +9,9 @@ EMAIL_HOST_PASSWORD = 'fooo'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+import os
+PROJECT_DIRECTORY = os.getcwd() 
+
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -134,6 +137,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'whoosh',
+    'haystack',
     'article',
     'south',
     'django.contrib.formtools',
@@ -208,5 +213,18 @@ LOGGING = {
 #         },
 #     }
 # }
+
+
+
+WHOOSH_INDEX = os.path.join(PROJECT_DIRECTORY, 'whoosh/')
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': WHOOSH_INDEX,
+    },
+}
+
+
 
 AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
