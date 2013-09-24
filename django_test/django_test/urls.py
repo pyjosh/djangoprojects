@@ -12,6 +12,8 @@ from django_test.views import ContactWizard
 
 urlpatterns = patterns('',
     url(r'^articles/', include('article.urls')),  # ! w/o $
+    url(r'^accounts/', include('userprofile.urls')),  # ! w/o $
+
     # Examples:
     # url(r'^$', 'django_test.views.home', name='home'),
     # url(r'^django_test/', include('django_test.foo.urls')),

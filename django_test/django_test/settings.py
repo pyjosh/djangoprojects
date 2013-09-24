@@ -137,6 +137,7 @@ INSTALLED_APPS = (
     'article',
     'south',
     'django.contrib.formtools',
+    'userprofile'
     )
 
 # A sample logging configuration. The only tangible logging
@@ -207,3 +208,5 @@ LOGGING = {
 #         },
 #     }
 # }
+
+AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
